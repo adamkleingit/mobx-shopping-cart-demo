@@ -1,0 +1,83 @@
+html, body, #root {
+  height: 100%;
+}
+
+.App {
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.App-header {
+  background-color: #222;
+  height: 90px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.shopping-bag {
+  text-align: right;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+.shopping-bag img {
+  width: 40px;
+  filter: invert(100%);
+}
+
+.shopping-bag-badge {
+  position: absolute;
+  border-radius: 50%;
+  background: red;
+  color: white;
+  right: 0px;
+  top: 0px;
+  width: 15px;
+  height: 18px;
+  line-height: 18px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.main-page {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.shopping-cart {
+  background: grey;
+  width: 0;
+  padding: 30px;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 130px;
+  bottom: 0;
+  transition: 300ms linear all;
+  overflow: hidden;
+}
+
+.shopping-cart-open {
+  opacity: 1;
+  width: 350px;
+}
+
+.products-list {
+  flex-grow: 1;
+  padding: 30px 10px;
+}
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
