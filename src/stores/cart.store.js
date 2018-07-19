@@ -1,5 +1,6 @@
 import { action, observable, computed } from 'mobx';
-import Products from './products.store';
+import { values } from 'lodash/fp';
+import productsStore from './products.store';
 
 export class CartItem {
   @observable productId;
@@ -10,7 +11,7 @@ export class CartItem {
   }
 
   @action updateQuantity(quantity) {
-    this.quantity = quantity;
+    this.quantity = Math.max(1, quantity);
   }
 
   @computed get totalPrice() {
@@ -18,26 +19,43 @@ export class CartItem {
   }
 
   @computed get product() {
-    return this.products.getProductById(this.productId);
+    return productsStore.getProductById(this.productId);
   }
 }
 
-export default class Cart {
-  @observable items = [];
+export class Cart {
+  @observable items = new Map();
 
   @action addItem(productId, quantity) {
-    this.items.push(new CartItem({productId, quantity}));
+    if (this.items.get(productId)) {
+      this.items.get(productId).updateQuantity(this.items.get(productId).quantity + 1);
+    } else {
+      this.items.set(productId, new CartItem({productId, quantity}));
+    }
   }
 
-  @action updateItem(index, quantity) {
-    this.items[index].updateQuantity(quantity);
+  @action updateItem(productId, quantity) {
+    this.items.get(productId).updateQuantity(quantity);
   }
 
-  @action removeItem(index) {
-    this.items.splice(index, 1);
+  @action removeItem(productId) {
+    this.items.delete(productId);
+  }
+
+  @computed get itemsArray() {
+    return values(this.items.toJSON());
   }
 
   @computed get totalPrice() {
-    return this.items.reduce((prev, curr) => prev + curr, 0);
+    return this.itemsArray.reduce(
+      (prev, item) => prev + item.totalPrice,
+      0
+    );
+  }
+
+  @computed get count() {
+    return this.itemsArray.length;
   }
 }
+
+export default new Cart();

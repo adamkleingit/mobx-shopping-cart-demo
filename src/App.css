@@ -35,6 +35,32 @@ html, body, #root {
   filter: invert(100%);
 }
 
+.close-cart {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.products-list-items {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.product {
+  width: 300px;
+  border: 1px solid black;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-details {
+  flex-grow: 1;
+}
+
 .shopping-bag-badge {
   position: absolute;
   border-radius: 50%;
@@ -73,6 +99,10 @@ html, body, #root {
   width: 350px;
 }
 
+.products-list input {
+  width: 250px;
+  margin-left: 10px;
+}
 .products-list {
   flex-grow: 1;
   padding: 30px 10px;

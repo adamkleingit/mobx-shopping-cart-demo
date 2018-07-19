@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "lodash": "4.17.10",
     "mobx": "5.0.3",
     "mobx-react": "5.2.3",
     "react": "^16.4.1",
@@ -16,7 +17,7 @@
     "eject": "react-app-rewired eject"
   },
   "devDependencies": {
-    "mobx-react-devtools": "5.0.1",
+    "mobx-react-devtools": "6.0.1",
     "react-app-rewire-mobx": "1.0.8",
     "react-app-rewired": "1.5.2"
   }
