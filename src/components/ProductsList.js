@@ -6,6 +6,11 @@ import { inject, observer } from 'mobx-react';
 class ProductsList extends Component {
   changeFilter = (el) => this.props.uiStore.setFilter(el.target.value);
 
+  addToCart = (productId) => {
+    this.props.cartStore.addItem(productId, 1)
+    this.props.uiStore.openCart();
+  }
+
   renderProduct = (product) => {
     return (
       <div className="product" key={ product.id }>
@@ -13,7 +18,7 @@ class ProductsList extends Component {
           <h1>{ product.title }</h1>
           <img src={ product.image } width={ 200 } alt={ product.title }/>
         </div>
-        <button onClick={ () => this.props.cartStore.addItem(product.id, 1) }>Buy ${ product.price }</button>
+        <button onClick={ () => this.addToCart(product.id) }>Buy ${ product.price }</button>
       </div>
     )
   }

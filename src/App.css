@@ -1,5 +1,39 @@
-html, body, #root {
-  height: 100%;
+body {
+  background: #4b84f5;
+}
+
+h1 {
+  font-size: 24px;
+  color: #4b84f5;
+}
+
+button:hover {
+  background: aliceblue;
+}
+
+button:active {
+  background: lightblue;
+}
+
+button {
+  line-height: 20px;
+  background: white;
+  box-shadow: none;
+  border: 1px solid #CCC;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .App {
@@ -10,10 +44,10 @@ html, body, #root {
 }
 
 .App-header {
-  background-color: #222;
-  height: 90px;
   padding: 20px;
   color: white;
+  background-color: black;
+  height: 58px;
 }
 
 .App-title {
@@ -25,9 +59,10 @@ html, body, #root {
 }
 
 .shopping-bag {
-  text-align: right;
-  display: block;
-  position: relative;
+  position: absolute;
+  cursor: pointer;
+  top: 56px;
+  right: 20px;
   cursor: pointer;
 }
 .shopping-bag img {
@@ -42,16 +77,17 @@ html, body, #root {
   right: 15px;
 }
 .products-list-items {
-  margin-top: 30px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .product {
+  margin-top: 30px;
   width: 300px;
   border: 1px solid black;
+  background: white;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -82,30 +118,88 @@ html, body, #root {
 }
 
 .shopping-cart {
+  display: flex;
+  flex-direction: column;
   background: grey;
   width: 0;
-  padding: 30px;
+  padding: 0 20px 20px 20px;
   opacity: 0;
   position: absolute;
-  right: 0;
-  top: 130px;
-  bottom: 0;
+  right: -400px;
+  top: 120px;
+  height: auto;
   transition: 300ms linear all;
-  overflow: hidden;
+  overflow: auto;
+  width: 300px;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 0 0 7px 2px rgba(0,0,0,0.3);
+  color: #4b84f5;
 }
 
 .shopping-cart-open {
   opacity: 1;
-  width: 350px;
+  right: 20px;
 }
 
-.products-list input {
-  width: 250px;
-  margin-left: 10px;
+.cart-empty {
+  margin-top: 20px;
+}
+
+.cart-item {
+  border-bottom: 1px solid darkgrey;
+  padding: 20px 0;
+  text-align: left;
+  position: relative;
+}
+
+.cart-total {
+  text-align: left;
+  font-weight: bold;
+  margin-top: 20px;
+  align-self: flex-end;
+}
+
+.cart-item-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.cart-item-quantity {
+  margin-top: 5px;
+}
+.cart-item-quantity button {
+  line-height: 10px;
+  vertical-align: middle;
+}
+
+.cart-item-quantity span {
+  margin: 5px;
+}
+button.cart-item-remove {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px;
 }
 .products-list {
   flex-grow: 1;
-  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+}
+label {
+  color: white;
+  text-align: left;
+  margin-left: 3px;
+}
+.products-list input {
+  width: 250px;
+  margin-left: 10px;
+  line-height: 20px;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

@@ -5,6 +5,10 @@ export class UI {
   @observable isCartOpen = false;
   @observable filter = '';
 
+  @action openCart() {
+    this.isCartOpen = true
+  }
+
   @action toggleCart() {
     this.isCartOpen = !this.isCartOpen;
   }

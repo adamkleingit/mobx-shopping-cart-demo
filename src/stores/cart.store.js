@@ -1,5 +1,5 @@
-import { action, observable, computed } from 'mobx';
-import { values } from 'lodash/fp';
+import { action, observable, computed, autorun, toJS } from 'mobx';
+import { values, forEach } from 'lodash/fp';
 import productsStore from './products.store';
 
 export class CartItem {
@@ -25,6 +25,19 @@ export class CartItem {
 
 export class Cart {
   @observable items = new Map();
+
+  constructor() {
+    if (localStorage.cart) {
+      const savedItems = JSON.parse(localStorage.cart);
+
+      forEach((item) => {
+        this.items.set(item.productId, new CartItem(item))
+      }, savedItems);
+    }
+    autorun(() => {
+      localStorage.cart = JSON.stringify(toJS(this.items));
+    });
+  }
 
   @action addItem(productId, quantity) {
     if (this.items.get(productId)) {
