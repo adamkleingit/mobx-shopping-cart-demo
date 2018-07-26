@@ -1,4 +1,4 @@
-import { action, observable, computed, autorun, toJS } from 'mobx';
+import { action, observable, computed, autorun, toJS, getDependencyTree, trace } from 'mobx';
 import { values, forEach } from 'lodash/fp';
 import productsStore from './products.store';
 
@@ -34,9 +34,12 @@ export class Cart {
         this.items.set(item.productId, new CartItem(item))
       }, savedItems);
     }
-    autorun(() => {
+    const reaction = autorun(() => {
       localStorage.cart = JSON.stringify(toJS(this.items));
+      // trace();
+      // console.log(getDependencyTree(reaction));
     });
+    // }, { delay: 2000, name: 'Persist' });
   }
 
   @action addItem(productId, quantity) {
