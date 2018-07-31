@@ -1,29 +1,39 @@
 import React, { Component } from 'react';
+import { Router } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import { createBrowserHistory } from 'history';
 import { Provider } from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
-import ShoppingBag from './components/ShoppingBag';
-import ProductsList from './components/ProductsList';
-import ShoppingCart from './components/ShoppingCart';
-import uiStore from './stores/ui.store';
-import cartStore from './stores/cart.store';
-import productsStore from './stores/products.store';
-import './App.css';
+import liquorStore from './stores/liquor.store';
+import beerStore from './stores/beer.store';
+import SubmitForm from './components/SubmitForm';
+import Results from './components/Results';
+import BeerList from './components/BeerList';
+
+localStorage.sessionId = localStorage.sessionId || Math.random()*100000000000000000;
+
+const routes = [
+  {
+    path: '/',
+    exact: true,
+    component: SubmitForm
+  },
+  {
+    path: '/results',
+    exact: true,
+    component: Results
+  },
+  {
+    path: '/beers',
+    exact: true,
+    component: BeerList
+  }
+];
 
 class App extends Component {
   render() {
     return (
-      <Provider { ...{ uiStore, cartStore, productsStore } }>
-        <div className="App">
-          <DevTools />
-          <header className="App-header">
-            <h1 className="App-title">MobX Shopping Cart Example</h1>
-            <ShoppingBag/>
-          </header>
-          <div className="main-page">
-            <ProductsList/>
-            <ShoppingCart/>
-          </div>
-        </div>
+      <Provider { ...{liquorStore, beerStore} }>
+        <Router history={createBrowserHistory({})}>{renderRoutes(routes)}</Router>
       </Provider>
     );
   }

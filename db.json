@@ -1,0 +1,76 @@
+{
+  "beers": [
+    {
+      "id": 1,
+      "title": "Goldstar"
+    },
+    {
+      "title": "Goldstar Unfiltered",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "title": "Macabbi"
+    },
+    {
+      "id": 4,
+      "title": "Macabbi 7.9"
+    },
+    {
+      "id": 5,
+      "title": "Red Malka"
+    },
+    {
+      "title": "Jems 8.8",
+      "id": 97551653920893940
+    },
+    {
+      "title": "Jems Pils",
+      "id": 89181389894278140
+    }
+  ],
+  "requests": [
+    {
+      "id": 1,
+      "quantity": 1,
+      "sessionId": 1234,
+      "name": "Adam",
+      "beer": "Goldstar"
+    },
+    {
+      "id": 2,
+      "quantity": 1,
+      "sessionId": 1234,
+      "name": "Maayan",
+      "beer": "Goldstar Unfiltered"
+    },
+    {
+      "id": 3,
+      "quantity": 1,
+      "sessionId": 1234,
+      "name": "Vova",
+      "beer": "Macabbi 7.9"
+    },
+    {
+      "id": 4,
+      "quantity": 1,
+      "sessionId": 1234,
+      "name": "Eran",
+      "beer": "Red Malka"
+    },
+    {
+      "name": "adam klein",
+      "beer": "Red Malka",
+      "quantity": "2",
+      "sessionId": "93562449737614770",
+      "id": 5
+    },
+    {
+      "name": "adam kleinasdf",
+      "beer": "Red Malka",
+      "quantity": "2",
+      "sessionId": "93562449737614770",
+      "id": 6
+    }
+  ]
+}
