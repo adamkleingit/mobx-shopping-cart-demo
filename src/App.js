@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { createBrowserHistory } from 'history';
 import { Provider } from 'mobx-react';
 import liquorStore from './stores/liquor.store';
 import beerStore from './stores/beer.store';
 import SubmitForm from './components/SubmitForm';
 import Results from './components/Results';
 import BeerList from './components/BeerList';
+import styled from 'styled-components';
+import './App.css';
 
 localStorage.sessionId = localStorage.sessionId || Math.random()*100000000000000000;
 
@@ -33,10 +34,19 @@ class App extends Component {
   render() {
     return (
       <Provider { ...{liquorStore, beerStore} }>
-        <Router history={createBrowserHistory({})}>{renderRoutes(routes)}</Router>
+        <div>
+          <img src="500-logo.png" width={250} alt="logo"/>
+          <StyledContainer>
+            <HashRouter>{renderRoutes(routes)}</HashRouter>
+          </StyledContainer>
+        </div>
       </Provider>
     );
   }
 }
+
+const StyledContainer = styled.div`
+  padding: 15px;
+`;
 
 export default App;

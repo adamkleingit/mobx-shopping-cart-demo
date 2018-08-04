@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import { Link } from 'react-router-dom';
+import { StyledLink } from './CommonComponents';
 import styled from 'styled-components';
 
 @inject('liquorStore')
@@ -13,34 +13,34 @@ class Results extends Component {
     this.props.liquorStore.fetchRequests();
   }
 
-  toggle = (index) => {
+  toggle = (id) => {
     this.setState({
-      [index]: !this.state[index]
+      [id]: !this.state[id]
     });
   }
 
-  renderRequest = ({ name, beer, quantity }, index) => (
-    <StyledRow key={`${name}-${beer}`} onClick={ () => this.toggle(index) } crossed={ this.state[index] }>
+  renderRequest = ({ id, name, beer, quantity }) => (
+    <StyledRow key={`${name}-${beer}`} onClick={ () => this.toggle(id) } crossed={ this.state[id] }>
       <td>{ name }</td><td>{quantity}</td><td>{ beer }</td>
     </StyledRow>
   );
   render() {
-    const {requests} = this.props.liquorStore;
+    const {todays} = this.props.liquorStore;
 
     return (
       <div>
-        { requests ? (
+        { todays ? (
           <table>
             <thead>
               <tr>
                 <th>name</th><th>quantity</th><th>beer</th>
               </tr>
             </thead>
-            <tbody>{ requests.map(this.renderRequest) }</tbody>
+            <tbody>{ todays.map(this.renderRequest) }</tbody>
           </table>
         ) : <div>loading...</div> }
-        <div><Link to="/">Edit your beer</Link></div>
-        <div><Link to="/beers">Beer List</Link></div>
+        <StyledLink to="/">Edit your beer</StyledLink>
+        <StyledLink to="/beers">Beer List</StyledLink>
       </div>
     );
   }
@@ -48,7 +48,6 @@ class Results extends Component {
 
 const StyledRow = styled.tr`
   text-decoration: ${(({crossed}) => crossed ? 'line-through' : '')};
-  color: red;
-`;
+AAA                                      hjcv ebrvv4S#G@GDF#‰¸®fvh cgfvvnbvvb vbbbbbbbbbbbbbbbbbbbbbbbbbbvvvvgn azFFFFFAAAA`;
 
 export default Results;

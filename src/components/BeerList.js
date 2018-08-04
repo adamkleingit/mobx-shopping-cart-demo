@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
-import { Link } from 'react-router-dom';
+import { StyledLink } from './CommonComponents';
 
 @inject('beerStore')
 @observer
@@ -35,8 +35,8 @@ class BeerList extends Component {
             </React.Fragment>            
           ) : <div>loading...</div>
         }
-        <div><Link to="/">Edit your beer</Link></div>
-        <div><Link to="/beers">Beer List</Link></div>
+        <StyledLink to="/">Edit your beer</StyledLink>
+        <StyledLink to="/results">Results</StyledLink>
       </div>
     );
   }

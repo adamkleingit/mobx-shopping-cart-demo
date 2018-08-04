@@ -11,16 +11,18 @@
     "react-router": "4.2.0",
     "react-router-config": "1.0.0-beta.4",
     "react-router-dom": "4.2.2",
-    "react-scripts": "1.1.4",
     "styled-components": "3.3.3"
   },
   "scripts": {
     "start": "react-app-rewired start",
+    "server": "./node_modules/.bin/json-server db.json --port 8080 --routes routes.json",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject"
   },
   "devDependencies": {
+    "react-scripts": "1.1.4",
+    "json-server": "0.14.0",
     "mobx-react-devtools": "6.0.1",
     "react-app-rewire-mobx": "1.0.8",
     "react-app-rewired": "1.5.2"

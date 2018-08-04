@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { StyledLink } from './CommonComponents';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { observer, inject } from 'mobx-react';
@@ -19,7 +20,7 @@ class SubmitForm extends Component {
   };
 
   isValid() { 
-    return this.state.name && this.state.beer;
+    return this.state.name && this.chosenBeer();
   }
 
   componentDidMount() {
@@ -52,6 +53,8 @@ class SubmitForm extends Component {
   setQuantity = (e) => {
     this.setState({ quantity: e.target.value });
   }
+  chosenBeer = () => this.state.isCustomBeer ? this.state.customBeer : this.state.beer
+
   submit = (e) => {
     e.preventDefault();
 
@@ -61,9 +64,10 @@ class SubmitForm extends Component {
       ));
       const formData = {
         name: this.state.name,
-        beer: this.state.isCustomBeer ? this.state.customBeer : this.state.beer,
+        beer: this.chosenBeer(),
         quantity: this.state.quantity,
-        sessionId: localStorage.sessionId
+        sessionId: localStorage.sessionId,
+        date: new Date()
       };
       this.setState({ isLoading: true });
       api.createRequest(formData)
@@ -83,43 +87,81 @@ class SubmitForm extends Component {
       <div>
         { beers ? (
             <form onSubmit={ this.submit }>
-              <StyledLabel>
-                <span>Your Name:</span>
-                <input disabled={ isLoading } required onChange={this.setName} value={this.state.name}/>
-              </StyledLabel>
-              <StyledLabel>
-                <span>Beer:</span>
-                <input disabled={ isLoading } type="radio" checked={!this.state.isCustomBeer} onChange={ () => this.setState({ isCustomBeer: false }) }/>
-                <select disabled={ isLoading } onChange={this.setBeer} value={this.state.beer}>
-                  { beers.map(this.renderBeerOption) }
-                </select>
-                <input disabled={ isLoading } type="radio" checked={this.state.isCustomBeer} onChange={ () => this.setState({ isCustomBeer: true }) }/>
-                <input disabled={ isLoading } placeholder="custom" onChange={this.setCustomBeer} value={this.state.customBeer}/>
-              </StyledLabel>
-              <StyledLabel>
-                <span>Quantity</span>
-                <input
-                  disabled={ isLoading }
-                  required
-                  onChange={this.setQuantity}
-                  value={this.state.quantity}
-                  type="number"
-                  min="1"
-                  max="5"/>
-              </StyledLabel>
-              <button disabled={ isLoading } role="submit">Submit</button>
+              <StyledField>
+                <StyledLabel>
+                  <span>Your Name:</span>
+                  <FullText disabled={ isLoading } required onChange={this.setName} value={this.state.name}/>
+                </StyledLabel>
+              </StyledField>
+              <StyledField>
+                <StyledLabel>
+                  <span>Beer:</span>
+                  <input disabled={ isLoading } type="radio" checked={!this.state.isCustomBeer} onChange={ () => this.setState({ isCustomBeer: false }) }/>
+                  <select disabled={ isLoading } onChange={this.setBeer} value={this.state.beer}>
+                    <option></option>
+                    { beers.map(this.renderBeerOption) }
+                  </select>
+                  <input disabled={ isLoading } type="radio" checked={this.state.isCustomBeer} onChange={ () => this.setState({ isCustomBeer: true }) }/>
+                  <input disabled={ isLoading } placeholder="custom" onChange={this.setCustomBeer} value={this.state.customBeer}/>
+                </StyledLabel>
+              </StyledField>
+              <StyledField>
+                <StyledLabel>
+                  <span>Quantity</span>
+                  <FullText
+                    disabled={ isLoading }
+                    required
+                    onChange={this.setQuantity}
+                    value={this.state.quantity}
+                    type="number"
+                    min="1"
+                    max="5"/>
+                </StyledLabel>
+              </StyledField>
+              <StyledField>
+                <StyledButton disabled={ isLoading || !this.isValid() }>Submit</StyledButton>
+              </StyledField>
             </form>
           ) : <div>loading...</div>
         }
-        <div><Link to="/results">See Results</Link></div>
-        <div><Link to="/beers">Beer List</Link></div>
+        <StyledLink to="/results">See Results</StyledLink>
+        <StyledLink to="/beers">Beer List</StyledLink>
       </div>
     );
   }
 }
 
 const StyledLabel = styled.label`
-  display: block
+  display: flex;
+  flex-direction: row;
+  span {
+    flex-basis: 100px;
+  }
+`;
+
+const FullText = styled.input`
+  border-radius: 4px;
+  line-height: 20px;
+  width: 290px;
+`;
+
+const StyledField = styled.div`
+  input {
+    color: black;
+  }
+  display: block;
+  margin-bottom: 10px;
+`;
+
+const StyledButton = styled.button`
+  outline: none;
+  box-shadow: none;
+  background: white;
+  cursor: pointer;
+  text-align: left;
+  font-size: 18px;
+  border-radius: 4px;
+  color: black;
 `;
 
 export default withRouter(SubmitForm);
