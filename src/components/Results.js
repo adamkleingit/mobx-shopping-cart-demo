@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
 import { StyledLink } from './CommonComponents';
 import styled from 'styled-components';
 
@@ -20,8 +26,10 @@ class Results extends Component {
   }
 
   renderRequest = ({ id, name, beer, quantity }) => (
-    <StyledRow key={`${name}-${beer}`} onClick={ () => this.toggle(id) } crossed={ this.state[id] }>
-      <td>{ name }</td><td>{quantity}</td><td>{ beer }</td>
+    <StyledRow key={`${name}-${beer}`} crossed={ this.state[id] }>
+      <TableCell>{ beer } X {quantity}</TableCell>
+      <TableCell>{ name }</TableCell>
+      <TableCell><Button variant="raised" onClick={ () => this.toggle(id) }>Toggle</Button></TableCell>
     </StyledRow>
   );
   render() {
@@ -30,14 +38,14 @@ class Results extends Component {
     return (
       <div>
         { todays ? (
-          <table>
-            <thead>
-              <tr>
-                <th>name</th><th>quantity</th><th>beer</th>
-              </tr>
-            </thead>
-            <tbody>{ todays.map(this.renderRequest) }</tbody>
-          </table>
+          <Table style={{maxWidth: 600}}>
+            <TableHead>
+              <TableRow>
+              <TableCell>Beer</TableCell><TableCell>Name</TableCell><TableCell>Check</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>{ todays.map(this.renderRequest) }</TableBody>
+          </Table>
         ) : <div>loading...</div> }
         <StyledLink to="/">Edit your beer</StyledLink>
         <StyledLink to="/beers">Beer List</StyledLink>
@@ -46,7 +54,7 @@ class Results extends Component {
   }
 }
 
-const StyledRow = styled.tr`
+const StyledRow = styled(TableRow)`
   text-decoration: ${(({crossed}) => crossed ? 'line-through' : '')};
 AAA                                      hjcv ebrvv4S#G@GDF#‰¸®fvh cgfvvnbvvb vbbbbbbbbbbbbbbbbbbbbbbbbbbvvvvgn azFFFFFAAAA`;
 
