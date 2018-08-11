@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { HashRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { Provider } from 'mobx-react';
+import styled from 'styled-components';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import liquorStore from './stores/liquor.store';
 import beerStore from './stores/beer.store';
 import SubmitForm from './components/SubmitForm';
 import Results from './components/Results';
 import BeerList from './components/BeerList';
-import styled from 'styled-components';
 import './App.css';
 
 localStorage.sessionId = localStorage.sessionId || Math.random()*100000000000000000;
@@ -35,6 +36,7 @@ class App extends Component {
     return (
       <Provider { ...{liquorStore, beerStore} }>
         <div>
+          <CssBaseline />
           <img src="500-logo.png" width={250} alt="logo"/>
           <StyledContainer>
             <HashRouter>{renderRoutes(routes)}</HashRouter>

@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "1.4.3",
+    "@material-ui/icons": "2.0.1",
     "lodash": "4.17.10",
     "mobx": "5.0.3",
     "mobx-react": "5.2.3",
@@ -11,6 +13,7 @@
     "react-router": "4.2.0",
     "react-router-config": "1.0.0-beta.4",
     "react-router-dom": "4.2.2",
+    "react-select": "2.0.0",
     "styled-components": "3.3.3"
   },
   "scripts": {
