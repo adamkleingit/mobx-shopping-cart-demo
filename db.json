@@ -1,20 +1,8 @@
 {
   "beers": [
     {
-      "id": 1,
-      "title": "Goldstar"
-    },
-    {
-      "title": "Goldstar Unfiltered",
-      "id": 2
-    },
-    {
       "id": 3,
       "title": "Macabbi"
-    },
-    {
-      "id": 4,
-      "title": "Macabbi 7.9"
     },
     {
       "id": 5,
@@ -29,12 +17,16 @@
       "id": 89181389894278140
     },
     {
-      "title": "gsa",
+      "title": "Heineken",
       "id": 80024598288980200
     },
     {
       "title": "IPA",
       "id": 2274249854437160.5
+    },
+    {
+      "title": "My Beer",
+      "id": 60168250225307560
     }
   ],
   "requests": [
@@ -133,6 +125,14 @@
       "sessionId": "31686604294837670",
       "date": "2018-08-11T11:30:36.915Z",
       "id": 18
+    },
+    {
+      "name": "Adam Klein",
+      "beer": "Heineken",
+      "quantity": "2",
+      "sessionId": "31686604294837670",
+      "date": "2018-08-11T11:38:49.918Z",
+      "id": 19
     }
   ]
 }

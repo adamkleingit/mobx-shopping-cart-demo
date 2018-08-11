@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
+import TextField from '@material-ui/core/TextField';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/AddCircle';
 import { StyledLink } from './CommonComponents';
 
 @inject('beerStore')
@@ -13,10 +16,10 @@ class BeerList extends Component {
     const { id, title } = beer;
 
     return (
-      <li key={ id }>
-        <input value={ title } onChange={(e) => beer.update(e.target.value)}/>
-        <button onClick={() => this.props.beerStore.removeBeer(id)}>x</button>
-      </li>
+      <div key={ id }>
+        <TextField autoFocus value={ title } onChange={(e) => beer.update(e.target.value)}/>
+        <DeleteIcon style={{cursor: 'pointer'}} onClick={() => this.props.beerStore.removeBeer(id)} />
+      </div>
     );
   }
 
@@ -28,10 +31,11 @@ class BeerList extends Component {
         {
           beers ? (
             <React.Fragment>
-              <ul>
-                { beers.map(this.renderBeer) }
-              </ul>
-              <button onClick={() => this.props.beerStore.addBeer()}>+</button>
+              { beers.map(this.renderBeer) }
+            
+              <div>
+                <AddIcon style={{cursor: 'pointer', marginTop: 10}} onClick={() => this.props.beerStore.addBeer()}/>
+              </div>
             </React.Fragment>            
           ) : <div>loading...</div>
         }
