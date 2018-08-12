@@ -11,7 +11,7 @@ import Results from './components/Results';
 import BeerList from './components/BeerList';
 import './App.css';
 
-localStorage.sessionId = localStorage.sessionId || Math.random()*100000000000000000;
+localStorage.sessionId = localStorage.sessionId || (Math.random()*100000000000000000).toString();
 
 const routes = [
   {

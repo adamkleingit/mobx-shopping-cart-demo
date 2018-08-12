@@ -1,32 +1,36 @@
 {
   "beers": [
     {
-      "id": 3,
-      "title": "Macabbi"
+      "title": "מכבי",
+      "id": 3
     },
     {
-      "id": 5,
-      "title": "Red Malka"
+      "title": "מלכה אדומה",
+      "id": 5
     },
     {
-      "title": "Jems 8.8",
+      "title": "ג׳מס 8.8",
       "id": 97551653920893940
     },
     {
-      "title": "Jems Pils",
+      "title": "ג׳מס פילס",
       "id": 89181389894278140
     },
     {
-      "title": "Heineken",
+      "title": "היינקן",
       "id": 80024598288980200
     },
     {
-      "title": "IPA",
+      "title": "שועל לאגר",
       "id": 2274249854437160.5
     },
     {
-      "title": "My Beer",
-      "id": 60168250225307560
+      "title": "קוזל",
+      "id": 11306591584787062
+    },
+    {
+      "title": "גולדסטאר",
+      "id": 96160129759660510
     }
   ],
   "requests": [
@@ -133,6 +137,46 @@
       "sessionId": "31686604294837670",
       "date": "2018-08-11T11:38:49.918Z",
       "id": 19
+    },
+    {
+      "name": "Adam Klein",
+      "beer": "Macabbi",
+      "quantity": "1",
+      "sessionId": "31686604294837670",
+      "date": "2018-08-11T19:39:46.741Z",
+      "id": 20
+    },
+    {
+      "name": "Adam Klein",
+      "beer": "Jems Pils",
+      "quantity": "1",
+      "sessionId": "31686604294837670",
+      "date": "2018-08-11T19:40:03.090Z",
+      "id": 21
+    },
+    {
+      "name": "adam klein",
+      "beer": "Red Malka",
+      "quantity": "2",
+      "sessionId": "93562449737614770",
+      "date": "2018-08-11T19:40:18.547Z",
+      "id": 22
+    },
+    {
+      "name": "Adam Klein",
+      "beer": "מכבי",
+      "quantity": "1",
+      "sessionId": "31686604294837670",
+      "date": "2018-08-11T19:41:08.405Z",
+      "id": 23
+    },
+    {
+      "name": "אדם קליין",
+      "beer": "ג׳מס פילס",
+      "quantity": "2",
+      "sessionId": "31686604294837670",
+      "date": "2018-08-11T19:42:26.330Z",
+      "id": 24
     }
   ]
 }

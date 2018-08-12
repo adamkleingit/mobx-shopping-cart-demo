@@ -33,7 +33,7 @@ export class BeerStore {
   }
 
   addBeer() {
-    const newBeer = new Beer({ title: '', id: Math.random()*100000000000000000 });
+    const newBeer = new Beer({ title: 'TBD', id: (Math.random()*100000000000000000).toString() });
     this.beers.push(newBeer);
     api.createBeer(newBeer);
   }

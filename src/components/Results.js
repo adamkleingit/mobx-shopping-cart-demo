@@ -19,17 +19,17 @@ class Results extends Component {
     this.props.liquorStore.fetchRequests();
   }
 
-  toggle = (id) => {
+  toggle = (key) => {
     this.setState({
-      [id]: !this.state[id]
+      [key]: !this.state[key]
     });
   }
 
-  renderRequest = ({ id, name, beer, quantity }) => (
-    <StyledRow key={`${name}-${beer}`} crossed={ this.state[id] }>
+  renderRequest = ({ sessionId, name, beer, quantity }) => (
+    <StyledRow key={`${name}-${beer}`} crossed={ this.state[`${sessionId}-${name}`] }>
       <TableCell>{ beer } X {quantity}</TableCell>
       <TableCell>{ name }</TableCell>
-      <TableCell><Button variant="raised" onClick={ () => this.toggle(id) }>Toggle</Button></TableCell>
+      <TableCell><Button variant="raised" onClick={ () => this.toggle(`${sessionId}-${name}`) }>Toggle</Button></TableCell>
     </StyledRow>
   );
   render() {
